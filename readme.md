@@ -1,3 +1,3 @@
 # Natours Application
 
-Built using technologies like : Node.js, espress, mongoose, mongoDb
+Built using technologies like : Node.js, espress, mongoose, mongoDb,
