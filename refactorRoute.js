@@ -13,6 +13,7 @@ const tourRouter = require('./Routes/tourRoutes');
 const userRouter = require('./Routes/userRoutes');
 const reviewRouter = require('./Routes/reviewRoutes');
 
+// Start express app
 const app = express();
 app.use(bodyParser.urlencoded({ extended: true }));
 app.use(express.json());
