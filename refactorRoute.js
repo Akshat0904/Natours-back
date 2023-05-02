@@ -1,6 +1,8 @@
 const express = require('express');
 const morgan = require('morgan');
+const pug = require('pug');
 const bodyParser = require('body-parser');
+const path = require('path');
 const rateLimit = require('express-rate-limit');
 const helmet = require('helmet');
 const mongoSanitize = require('express-mongo-sanitize');
@@ -17,7 +19,13 @@ const reviewRouter = require('./Routes/reviewRoutes');
 const app = express();
 app.use(bodyParser.urlencoded({ extended: true }));
 app.use(express.json());
+
+app.set('View Engine', 'pug');
+app.set('views', path.join(__dirname, 'views'));
+
 // 1) Global Middleware
+// Serving static files
+app.use(express.static(`${__dirname}/public`));
 // Set security HTTP headers
 app.use(helmet());
 
@@ -58,9 +66,6 @@ app.use(
     ],
   })
 );
-
-// Serving static files
-app.use(express.static(`${__dirname}/public`));
 
 //Create a middleware for access the excution time and date
 app.use((req, res, next) => {
